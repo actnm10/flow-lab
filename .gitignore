@@ -1,0 +1,14 @@
+# Local dependencies, configuration and generated files
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.log
+*.zip
+.DS_Store
+Thumbs.db
+
+# Local screenshot and evaluation artifacts
+validation/

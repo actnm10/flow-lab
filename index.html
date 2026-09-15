@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flow Lab — 3D fluid dynamics</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand"><span class="mark">≈</span><strong>FLOW LAB</strong><span class="divider"></span><span class="subtitle">3D fluid dynamics</span></div><div class="header-right"><span id="solverState">Initializing flow</span><button id="aboutBtn" class="quiet">Model & accuracy</button></div></header>
+<main>
+<section id="viewport" aria-label="Interactive three dimensional fluid field">
+<canvas id="scene" aria-label="Fluid flowing from left to right around an obstacle. Drag to orbit, scroll to zoom." tabindex="0"></canvas>
+<div class="scene-heading"><span class="eyebrow">VIRTUAL WIND TUNNEL</span><h1 id="objectTitle">Flow around a sphere</h1><p id="objectDetail">Incompressible, viscous flow · no-slip surface</p></div>
+<div class="view-buttons" aria-label="Camera views"><button data-view="perspective" class="active">Orbit</button><button data-view="side">Side</button><button data-view="top">Top</button><button data-view="front">Front</button></div>
+<div id="dropOverlay"><strong>Drop your object here</strong><span>.blend · .stl · .obj</span></div>
+<div class="scene-bottom"><div class="legend"><span id="legendTitle">VELOCITY · m/s</span><div class="gradient" id="legendGradient"></div><div class="legend-values"><span id="legendMin">0</span><span id="legendMid">0.75</span><span id="legendMax">1.50</span></div></div><div class="orbit-hint">Drag to orbit · Scroll to zoom<br><span>Shift + drag to pan · Space to freeze</span></div></div>
+<div class="transport"><button id="playBtn" class="primary" aria-label="Pause simulation">Ⅱ <span>Freeze</span></button><button id="stepBtn" title="Advance one solver step">Step</button><button id="restartBtn" title="Restart the flow">↺</button><div class="time"><span id="simTime">0.00</span><small>s</small></div><span id="frozenHint"></span><button id="captureBtn" class="quiet">Save image</button></div>
+<div id="toast" role="status" aria-live="polite"></div>
+</section>
+<aside>
+<div class="panel-title"><h2>Experiment</h2><span class="tag">LIVE SOLVER</span></div>
+<button id="uploadBtn" class="upload"><span class="upload-icon">＋</span><strong>Drop a Blender object</strong><span>or click to choose .blend, .obj, .stl</span></button><input id="fileInput" type="file" accept=".blend,.obj,.stl" hidden>
+<div class="object-row"><span id="meshLabel">Sphere · analytic surface</span><button id="sphereBtn" class="text-button">Reset</button></div>
+<section class="orientation-panel" aria-labelledby="orientationTitle">
+<div class="orientation-heading"><h3 id="orientationTitle">OBJECT ORIENTATION</h3><button id="resetOrientation" class="text-button">Reset angles</button></div>
+<div class="drag-modes" aria-label="Scene drag behavior"><button id="cameraDrag" class="active" aria-pressed="true">Orbit camera</button><button id="objectDrag" aria-pressed="false">Rotate object</button></div>
+<p id="rotationHelp" class="orientation-help">Choose Rotate object, then drag the scene. A sphere looks the same at every angle.</p>
+<div class="rotation-control"><label for="rotationX">X rotation</label><div class="angle-entry"><input id="angleX" aria-label="X rotation in degrees" type="number" min="-180" max="180" step="0.1" value="0"><span>°</span></div><input id="rotationX" aria-label="X rotation" type="range" min="-180" max="180" step="0.1" value="0"></div>
+<div class="rotation-control"><label for="rotationY">Y rotation</label><div class="angle-entry"><input id="angleY" aria-label="Y rotation in degrees" type="number" min="-180" max="180" step="0.1" value="0"><span>°</span></div><input id="rotationY" aria-label="Y rotation" type="range" min="-180" max="180" step="0.1" value="0"></div>
+<div class="rotation-control"><label for="rotationZ">Z rotation</label><div class="angle-entry"><input id="angleZ" aria-label="Z rotation in degrees" type="number" min="-180" max="180" step="0.1" value="0"><span>°</span></div><input id="rotationZ" aria-label="Z rotation" type="range" min="-180" max="180" step="0.1" value="0"></div>
+<div class="select-row"><label for="modelAxis">Model forward axis</label><select id="modelAxis"><option value="x">Local X</option><option value="y">Local Y</option><option value="z">Local Z</option></select></div>
+<div class="axis-presets" aria-label="Align the model forward axis"><button data-align="x" aria-pressed="true" title="Align the selected model axis with the flow direction">Align X</button><button data-align="y" aria-pressed="false" title="Align the selected model axis vertically">Align Y</button><button data-align="z" aria-pressed="false" title="Align the selected model axis across the tunnel">Align Z</button></div>
+<p class="orientation-note">X = flow · Y = up · Z = across<br>Release to recalculate flow at the new angle.</p>
+</section>
+<div class="section-label">FLOW CONDITIONS</div>
+<label class="control"><span>Inlet speed <output id="speedValue">1.00 m/s</output></span><input id="speed" type="range" min="0.2" max="30" step="0.05" value="1"></label>
+<label class="control"><span>Object diameter <output id="sizeValue">2.30 m</output></span><input id="size" type="range" min="1.4" max="3.2" step="0.1" value="2.3"></label>
+<label class="control"><span>Kinematic viscosity <output id="viscosityValue">0.040 m²/s</output></span><input id="viscosity" type="range" min="0.02" max="0.2" step="0.005" value="0.04"></label>
+<label class="control"><span>Gravity <output id="gravityValue">9.81 m/s²</output></span><input id="gravity" type="range" min="0" max="20" step="0.1" value="9.81"></label>
+<p class="micro">Gravity sets hydrostatic pressure in this constant-density fluid.</p>
+<div class="readout"><div><span>Reynolds number</span><strong id="reValue">58</strong></div><div><span>Effective viscosity</span><strong id="effectiveViscosity">0.040 m²/s</strong></div><div><span>Grid resolution</span><strong id="gridValue">96 × 48 × 48</strong></div><div><span>Flow development</span><strong id="development">Starting</strong></div></div>
+<div class="section-label">DISPLAY</div>
+<div class="select-row"><label for="colorMode">Color field</label><select id="colorMode"><option value="speed">Velocity</option><option value="pressure">Static pressure</option><option value="total">Static + gravity</option><option value="vorticity">Vorticity</option></select></div>
+<div class="select-row"><label for="sliceMode">Center slice</label><select id="sliceMode"><option value="off">Off</option><option value="on">Show field</option></select></div>
+<div class="toggle-row"><label><input id="showLines" type="checkbox" checked> Streamlines</label><label><input id="showParticles" type="checkbox" checked> Tracers</label></div>
+<div class="toggle-row"><label><input id="showVectors" type="checkbox"> Vectors</label><label><input id="showDomain" type="checkbox" checked> Domain</label></div>
+<label class="control"><span>Tracer density <output id="densityValue">2,500</output></span><input id="density" type="range" min="500" max="10000" step="500" value="2500"></label>
+<label class="control"><span>Lighting <output id="lightingValue">100%</output></span><input id="lighting" type="range" min="20" max="180" step="5" value="100"></label>
+<label class="control"><span>Playback rate <output id="rateValue">1×</output></span><input id="rate" type="range" min="0.25" max="3" step="0.25" value="1"></label>
+<div class="select-row"><label for="quality">Solver quality</label><select id="quality"><option value="72">Fast · 93k cells</option><option value="96" selected>Balanced · 221k cells</option><option value="128">Fine · 524k cells</option></select></div>
+<div class="panel-foot"><span id="fps">— fps</span><span id="stepsRate">— steps/s</span><span>Native WebGL</span></div>
+</aside>
+</main>
+<dialog id="about"><button id="closeAbout" class="dialog-close" aria-label="Close">×</button><span class="eyebrow">MODEL & ACCURACY</span><h2>A real solver, at browser scale.</h2><p>A three-dimensional D3Q19 lattice-Boltzmann method evolves velocity and pressure. Viscosity, inertia and no-slip bounce-back at the voxelized object determine the flow. Streamlines are integrated through the current solved field; tracers move with that field.</p><p>The open wind tunnel uses a uniform inlet, far-field side boundaries and a damped outflow. Gravity is balanced by hydrostatic pressure in a constant-density fluid; there is no free surface, buoyancy or falling liquid.</p><p>This is an exploratory simulation, not a validated engineering tool. Coarse curved boundaries, finite domain size, weak compressibility and under-resolved wakes limit accuracy. Increase quality and compare results. A low-Mach stability limit may raise the effective viscosity; the Reynolds number always uses the effective value.</p><p id="numerics"></p><h3>Blender import</h3><p>Run the included launcher for .blend import. Installed Blender evaluates the active scene's visible meshes, modifiers, curves and instances at its saved frame. The longest bounding-box dimension becomes the object diameter. Closed, watertight objects give the best result. Details below a grid cell cannot be resolved. Embedded scripts are disabled. No files are sent to the internet.</p><p>Pressure views color the surface using pressure sampled just outside the boundary, relative to the far-field reference. Static + gravity includes the hydrostatic term −ρgy; it is not stagnation pressure. Other views use a neutral surface. Fluid density is 1.225 kg/m³. All vorticity colors use the magnitude of curl of the solved velocity. Tracer density changes visualization only.</p><p class="links"><a href="https://arxiv.org/abs/comp-gas/9508001" target="_blank" rel="noopener">LBM boundary-condition reference</a> · <a href="https://docs.blender.org/api/5.0/bpy.types.Depsgraph.html" target="_blank" rel="noopener">Blender geometry evaluation</a></p></dialog>
+<script src="app.js"></script>
+</body></html>
