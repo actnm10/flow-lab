@@ -11,4 +11,10 @@ __pycache__/
 Thumbs.db
 
 # Local screenshot and evaluation artifacts
-validation/
+validation/*
+!validation/grid-consistency.cjs
+!validation/grid-consistency.test.cjs
+!validation/README.md
+!validation/BASELINE.md
+!validation/baselines/
+validation-results/

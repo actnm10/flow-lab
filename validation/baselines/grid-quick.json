@@ -1,0 +1,651 @@
+{
+  "schemaVersion": 1,
+  "mode": "quick",
+  "provenance": {
+    "solverSha256": "9d3ed924a19f8aa945ce761da739c1b4b061853e88809713caea3ff40b8b8802",
+    "harnessSha256": "a72f260523d3ea5fb00f6000e7dc8eb614637fb4c4a509fa57292713baed0db4",
+    "solverGitBlobSha1": "2de913814441acd1c10ce15de39fac02696dc22c",
+    "node": "v24.19.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "case": {
+    "speed": 1,
+    "size": 2.3,
+    "viscosity": 0.05,
+    "sphere": true,
+    "rate": 1,
+    "effectiveRe": 46,
+    "domainMetres": [
+      16,
+      8,
+      8
+    ],
+    "densityKgM3": 1.225
+  },
+  "sampling": {
+    "count": 9954,
+    "xOverD": [
+      -1.5,
+      3
+    ],
+    "yOverD": [
+      -1,
+      1
+    ],
+    "zOverD": [
+      -1,
+      1
+    ],
+    "spacingOverD": 0.125,
+    "solidClearanceMetres": 0.4444444444444444,
+    "pointsSha256": "d476e139fcc2e99bac0aca47af524c68d84ab2434e9839fde80fae61e43beeda",
+    "method": "Trilinear at identical SI coordinates; all eight stencil cells must have mask=0.",
+    "pressure": "field[3] is Cp=(rho_lattice-1)*2/(3*0.075^2), not pressure in Pa."
+  },
+  "policy": {
+    "velocityRms": 0.05,
+    "cpRms": 0.1,
+    "temporalVelocityRms": 0.002,
+    "temporalCpRms": 0.005,
+    "maxMach": 0.3,
+    "densityVariation": 0.05,
+    "consecutiveIntervals": 3,
+    "intervalSeconds": 3,
+    "quickTimeSeconds": 6,
+    "minSettleTimeSeconds": 12,
+    "maxTimeSeconds": 6,
+    "note": "Exploratory regression tolerances, selected before the baseline run; not accuracy guarantees."
+  },
+  "grids": [
+    {
+      "nx": 72,
+      "ny": 36,
+      "nz": 36,
+      "dx": 0.2222222222222222,
+      "dt": 0.016666666666666666,
+      "effectiveViscosity": 0.05,
+      "tau": 0.550625,
+      "re": 45.99999999999999,
+      "cellsPerDiameter": 10.35,
+      "solidCells": 624,
+      "voxelVolume": 6.847736625514401,
+      "voxelVolumeRelativeError": 0.07489221626566822
+    },
+    {
+      "nx": 96,
+      "ny": 48,
+      "nz": 48,
+      "dx": 0.16666666666666666,
+      "dt": 0.012499999999999999,
+      "effectiveViscosity": 0.05,
+      "tau": 0.5675,
+      "re": 45.99999999999999,
+      "cellsPerDiameter": 13.799999999999999,
+      "solidCells": 1376,
+      "voxelVolume": 6.3703703703703685,
+      "voxelVolumeRelativeError": -0.000040173810544219535
+    },
+    {
+      "nx": 128,
+      "ny": 64,
+      "nz": 64,
+      "dx": 0.125,
+      "dt": 0.009375,
+      "effectiveViscosity": 0.05,
+      "tau": 0.59,
+      "re": 45.99999999999999,
+      "cellsPerDiameter": 18.4,
+      "solidCells": 3184,
+      "voxelVolume": 6.21875,
+      "voxelVolumeRelativeError": -0.02384008973184093
+    }
+  ],
+  "checkpoints": [
+    {
+      "timeSeconds": 3,
+      "transitTimes": 1.3043478260869565,
+      "grids": [
+        {
+          "nx": 72,
+          "steps": 180,
+          "actualTimeSeconds": 2.9999999999999942,
+          "drift": null,
+          "settledIntervals": 0,
+          "peakMach": 0.1509687890821924,
+          "peakDensityVariation": 0.08803029730916023,
+          "peakDensityTimeSeconds": 0.6333333333333333,
+          "diagnosticsAtCheckpoint": {
+            "maxMach": 0.1509687890821924,
+            "densityVariation": 0.016768913716077805
+          },
+          "probes": [
+            {
+              "xOverD": -1,
+              "velocityAndCp": [
+                0.7426136732101438,
+                -1.0842021724855044e-19,
+                -9.75781955236954e-19,
+                0.8753649145364761
+              ]
+            },
+            {
+              "xOverD": 0.75,
+              "velocityAndCp": [
+                0.08645222121849676,
+                0,
+                8.673617379884035e-19,
+                -0.03946139204781493
+              ]
+            },
+            {
+              "xOverD": 1,
+              "velocityAndCp": [
+                0.2570986703038221,
+                -4.336808689942018e-19,
+                -1.3010426069826053e-18,
+                0.016594385541975547
+              ]
+            },
+            {
+              "xOverD": 1.5,
+              "velocityAndCp": [
+                0.5269872307777406,
+                2.0328790734103208e-19,
+                -6.640738306473715e-19,
+                -0.00018043649179160084
+              ]
+            },
+            {
+              "xOverD": 2,
+              "velocityAndCp": [
+                0.6901265621185303,
+                1.0842021724855044e-19,
+                -3.2526065174565133e-19,
+                -0.08502372652292257
+              ]
+            },
+            {
+              "xOverD": 3,
+              "velocityAndCp": [
+                0.85297891497612,
+                0,
+                1.0842021724855044e-19,
+                -0.29159723222255696
+              ]
+            }
+          ]
+        },
+        {
+          "nx": 96,
+          "steps": 240,
+          "actualTimeSeconds": 3.000000000000009,
+          "drift": null,
+          "settledIntervals": 0,
+          "peakMach": 0.15050741857384844,
+          "peakDensityVariation": 0.08220045641064644,
+          "peakDensityTimeSeconds": 0.6124999999999999,
+          "diagnosticsAtCheckpoint": {
+            "maxMach": 0.15050741857384844,
+            "densityVariation": 0.016233425587415695
+          },
+          "probes": [
+            {
+              "xOverD": -1,
+              "velocityAndCp": [
+                0.7549643218517302,
+                0,
+                0,
+                0.8211507260799409
+              ]
+            },
+            {
+              "xOverD": 0.75,
+              "velocityAndCp": [
+                0.096826614253223,
+                0,
+                -4.336808689942018e-19,
+                -0.019117063749581532
+              ]
+            },
+            {
+              "xOverD": 1,
+              "velocityAndCp": [
+                0.26517906486988085,
+                0,
+                8.673617379884035e-19,
+                0.02045189924538139
+              ]
+            },
+            {
+              "xOverD": 1.5,
+              "velocityAndCp": [
+                0.5267807722091673,
+                -1.0842021724855044e-19,
+                -1.0842021724855044e-19,
+                0.0025864442810416693
+              ]
+            },
+            {
+              "xOverD": 2,
+              "velocityAndCp": [
+                0.689084529876709,
+                -4.0657581468206416e-20,
+                -4.0657581468206416e-20,
+                -0.08138574883341791
+              ]
+            },
+            {
+              "xOverD": 3,
+              "velocityAndCp": [
+                0.8511236488819123,
+                0,
+                0,
+                -0.2881755650043486
+              ]
+            }
+          ]
+        },
+        {
+          "nx": 128,
+          "steps": 320,
+          "actualTimeSeconds": 2.9999999999999827,
+          "drift": null,
+          "settledIntervals": 0,
+          "peakMach": 0.15018948592739437,
+          "peakDensityVariation": 0.08324561081826687,
+          "peakDensityTimeSeconds": 0.61875,
+          "diagnosticsAtCheckpoint": {
+            "maxMach": 0.15018948592739437,
+            "densityVariation": 0.016466723755002022
+          },
+          "probes": [
+            {
+              "xOverD": -1,
+              "velocityAndCp": [
+                0.7584430158138274,
+                1.6263032587282567e-19,
+                1.6263032587282567e-19,
+                0.8021394729614257
+              ]
+            },
+            {
+              "xOverD": 0.75,
+              "velocityAndCp": [
+                0.0988824948668479,
+                1.0842021724855044e-19,
+                1.0842021724855044e-19,
+                -0.021201812941581046
+              ]
+            },
+            {
+              "xOverD": 1,
+              "velocityAndCp": [
+                0.2669319272041323,
+                0,
+                0,
+                0.019029378239065434
+              ]
+            },
+            {
+              "xOverD": 1.5,
+              "velocityAndCp": [
+                0.5257024526596068,
+                -8.131516293641283e-20,
+                -8.131516293641283e-20,
+                0.00455646591726695
+              ]
+            },
+            {
+              "xOverD": 2,
+              "velocityAndCp": [
+                0.6878501236438751,
+                5.421010862427522e-20,
+                5.421010862427522e-20,
+                -0.07951942086219785
+              ]
+            },
+            {
+              "xOverD": 3,
+              "velocityAndCp": [
+                0.8498872697353362,
+                0,
+                0,
+                -0.28637101054191577
+              ]
+            }
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "grids": [
+            72,
+            96
+          ],
+          "velocityRmsOverU": 0.008499528615035156,
+          "velocityMaxOverU": 0.04772339844050457,
+          "cpRms": 0.013893821204172718,
+          "cpMax": 0.12730813097208804
+        },
+        {
+          "grids": [
+            96,
+            128
+          ],
+          "velocityRmsOverU": 0.00422470195383949,
+          "velocityMaxOverU": 0.021300352133436874,
+          "cpRms": 0.007430186501725419,
+          "cpMax": 0.0641239536926157
+        },
+        {
+          "grids": [
+            72,
+            128
+          ],
+          "velocityRmsOverU": 0.012055369241966013,
+          "velocityMaxOverU": 0.059538183965358794,
+          "cpRms": 0.01901561563927883,
+          "cpMax": 0.1282378163561234
+        }
+      ],
+      "refinementRatio": {
+        "velocity": 0.4970513242777071,
+        "cp": 0.534783512220088
+      }
+    },
+    {
+      "timeSeconds": 6,
+      "transitTimes": 2.608695652173913,
+      "grids": [
+        {
+          "nx": 72,
+          "steps": 360,
+          "actualTimeSeconds": 5.999999999999984,
+          "drift": {
+            "velocityRmsOverU": 0.09384215479912579,
+            "velocityMaxOverU": 0.19429149527641773,
+            "cpRms": 0.17060875940187076,
+            "cpMax": 0.3127492982782424
+          },
+          "settledIntervals": 0,
+          "peakMach": 0.15405060543085544,
+          "peakDensityVariation": 0.08803029730916023,
+          "peakDensityTimeSeconds": 0.6333333333333333,
+          "diagnosticsAtCheckpoint": {
+            "maxMach": 0.15405060543085544,
+            "densityVariation": 0.019170979037880898
+          },
+          "probes": [
+            {
+              "xOverD": -1,
+              "velocityAndCp": [
+                0.792577016353607,
+                2.168404344971009e-19,
+                2.168404344971009e-19,
+                0.6555406391620636
+              ]
+            },
+            {
+              "xOverD": 0.75,
+              "velocityAndCp": [
+                0.011586493937647985,
+                1.0842021724855044e-19,
+                5.421010862427522e-19,
+                -0.21334518808871494
+              ]
+            },
+            {
+              "xOverD": 1,
+              "velocityAndCp": [
+                0.11268733367323915,
+                0,
+                0,
+                -0.1329918205738066
+              ]
+            },
+            {
+              "xOverD": 1.5,
+              "velocityAndCp": [
+                0.3570586793124675,
+                -5.421010862427522e-20,
+                -5.421010862427522e-20,
+                -0.05685457326471806
+              ]
+            },
+            {
+              "xOverD": 2,
+              "velocityAndCp": [
+                0.5459858655929566,
+                -5.421010862427522e-20,
+                -5.421010862427522e-20,
+                -0.05624727010726931
+              ]
+            },
+            {
+              "xOverD": 3,
+              "velocityAndCp": [
+                0.7899590343236922,
+                0,
+                2.168404344971009e-19,
+                -0.11907950602471824
+              ]
+            }
+          ]
+        },
+        {
+          "nx": 96,
+          "steps": 480,
+          "actualTimeSeconds": 6.0000000000000515,
+          "drift": {
+            "velocityRmsOverU": 0.0948109341433593,
+            "velocityMaxOverU": 0.20209163314844122,
+            "cpRms": 0.16844720583350797,
+            "cpMax": 0.3143154266774655
+          },
+          "settledIntervals": 0,
+          "peakMach": 0.15224210390024767,
+          "peakDensityVariation": 0.08220045641064644,
+          "peakDensityTimeSeconds": 0.6124999999999999,
+          "diagnosticsAtCheckpoint": {
+            "maxMach": 0.15224210390024767,
+            "densityVariation": 0.018028033897280693
+          },
+          "probes": [
+            {
+              "xOverD": -1,
+              "velocityAndCp": [
+                0.8091078877449034,
+                0,
+                4.336808689942018e-19,
+                0.5961678445339205
+              ]
+            },
+            {
+              "xOverD": 0.75,
+              "velocityAndCp": [
+                0.018371064297389265,
+                0,
+                0,
+                -0.1888218075037002
+              ]
+            },
+            {
+              "xOverD": 1,
+              "velocityAndCp": [
+                0.12400332689285294,
+                1.0842021724855044e-19,
+                1.0842021724855044e-19,
+                -0.11872785836458198
+              ]
+            },
+            {
+              "xOverD": 1.5,
+              "velocityAndCp": [
+                0.3637171030044555,
+                0,
+                -4.336808689942018e-19,
+                -0.05285439789295198
+              ]
+            },
+            {
+              "xOverD": 2,
+              "velocityAndCp": [
+                0.545853841304779,
+                0,
+                0,
+                -0.0543647576123476
+              ]
+            },
+            {
+              "xOverD": 3,
+              "velocityAndCp": [
+                0.7847110331058501,
+                0,
+                0,
+                -0.10990957543253893
+              ]
+            }
+          ]
+        },
+        {
+          "nx": 128,
+          "steps": 640,
+          "actualTimeSeconds": 6.000000000000049,
+          "drift": {
+            "velocityRmsOverU": 0.09542313621355687,
+            "velocityMaxOverU": 0.20747298022888114,
+            "cpRms": 0.16688016199164057,
+            "cpMax": 0.31764116497337824
+          },
+          "settledIntervals": 0,
+          "peakMach": 0.15115849809705412,
+          "peakDensityVariation": 0.08324561081826687,
+          "peakDensityTimeSeconds": 0.61875,
+          "diagnosticsAtCheckpoint": {
+            "maxMach": 0.15076203383143175,
+            "densityVariation": 0.018308820202946663
+          },
+          "probes": [
+            {
+              "xOverD": -1,
+              "velocityAndCp": [
+                0.8150117278099059,
+                0,
+                -4.336808689942018e-19,
+                0.5777577996253968
+              ]
+            },
+            {
+              "xOverD": 0.75,
+              "velocityAndCp": [
+                0.02035918654873962,
+                5.421010862427522e-20,
+                5.421010862427522e-20,
+                -0.18316498249769217
+              ]
+            },
+            {
+              "xOverD": 1,
+              "velocityAndCp": [
+                0.12871628627181067,
+                0,
+                2.168404344971009e-19,
+                -0.11255670785903922
+              ]
+            },
+            {
+              "xOverD": 1.5,
+              "velocityAndCp": [
+                0.3658602982759475,
+                8.131516293641283e-20,
+                8.131516293641283e-20,
+                -0.05097707100212574
+              ]
+            },
+            {
+              "xOverD": 2,
+              "velocityAndCp": [
+                0.544720822572708,
+                -1.0842021724855044e-19,
+                -1.0842021724855044e-19,
+                -0.05298755839467048
+              ]
+            },
+            {
+              "xOverD": 3,
+              "velocityAndCp": [
+                0.7814761817455291,
+                -5.421010862427522e-20,
+                -5.421010862427522e-20,
+                -0.10451661124825473
+              ]
+            }
+          ]
+        }
+      ],
+      "pairs": [
+        {
+          "grids": [
+            72,
+            96
+          ],
+          "velocityRmsOverU": 0.011789289433703389,
+          "velocityMaxOverU": 0.07477374684978126,
+          "cpRms": 0.01690623220300539,
+          "cpMax": 0.1463792427070446
+        },
+        {
+          "grids": [
+            96,
+            128
+          ],
+          "velocityRmsOverU": 0.005892165628913635,
+          "velocityMaxOverU": 0.03243549650219895,
+          "cpRms": 0.008730026985544037,
+          "cpMax": 0.07272052969783604
+        },
+        {
+          "grids": [
+            72,
+            128
+          ],
+          "velocityRmsOverU": 0.016931605787686623,
+          "velocityMaxOverU": 0.09703690267925562,
+          "cpRms": 0.022862359881735447,
+          "cpMax": 0.13785970585420837
+        }
+      ],
+      "refinementRatio": {
+        "velocity": 0.49978971693315355,
+        "cp": 0.5163792192557319
+      }
+    }
+  ],
+  "quick": {
+    "status": "FAIL",
+    "checks": {
+      "machWithinEnvelope": true,
+      "densityWithinEnvelope": false,
+      "fineVelocityDifference": true,
+      "fineCpDifference": true,
+      "decreasingVelocityDifference": true,
+      "decreasingCpDifference": true
+    },
+    "scope": "Fixed-time numerical consistency; settling is not required."
+  },
+  "result": {
+    "status": "FAIL",
+    "checks": {
+      "machWithinEnvelope": true,
+      "densityWithinEnvelope": false,
+      "fineVelocityDifference": true,
+      "fineCpDifference": true,
+      "decreasingVelocityDifference": true,
+      "decreasingCpDifference": true
+    },
+    "scope": "Fixed-time numerical consistency; settling is not required."
+  },
+  "stopReason": "fixed_time",
+  "elapsedSeconds": 59.40310337
+}

@@ -49,6 +49,10 @@ Static pressure colors are derived from the solved lattice density, relative to 
 
 This is an exploratory simulation, **not a validated engineering analysis**. A finite tunnel, voxelized curved boundaries, weak compressibility, limited resolution, and simple inlet/outlet treatment affect quantitative accuracy. A critic's visual score does not establish force accuracy, grid independence or experimental agreement. Compare resolutions and use a validated CFD package for design decisions.
 
+## Reproducible grid consistency check
+
+Run `node validation/grid-consistency.cjs --mode quick` for a fixed-time sphere comparison, or `node validation/grid-consistency.cjs --mode extended` to also check temporal settling. Both use the existing solver at all three resolutions, match physical times and effective viscosity, and write JSON measurements with explicit acceptance gates. No browser, Blender, or package installation is needed. See [the check's method and limits](validation/README.md) and [measured baseline](validation/BASELINE.md). Numerical consistency alone does not establish physical accuracy.
+
 ## References
 
 - [Zou and He: pressure and velocity flow boundary conditions for lattice-Boltzmann BGK models](https://arxiv.org/abs/comp-gas/9508001) — background on LBM boundaries; this app uses the simpler boundaries described above, not a full Zou–He implementation.
